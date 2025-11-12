@@ -14,27 +14,18 @@ importers:
 
   app:
     dependencies:
-      '@fhevm/mock-utils':
-        specifier: ^0.1.0
-        version: 0.1.0(@zama-fhe/relayer-sdk@0.1.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(typescript@5.9.3)
       '@rainbow-me/rainbowkit':
         specifier: 2.2.8
         version: 2.2.8(@tanstack/react-query@5.59.15(react@18.3.1))(@types/react@18.3.26)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)(viem@2.34.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.75))(wagmi@2.16.4(@tanstack/query-core@5.81.5)(@tanstack/react-query@5.59.15(react@18.3.1))(@types/react@18.3.26)(bufferutil@4.0.9)(react@18.3.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.34.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.75))(zod@3.25.75))
       '@tanstack/react-query':
         specifier: 5.59.15
         version: 5.59.15(react@18.3.1)
-      '@zama-fhe/relayer-sdk':
-        specifier: 0.1.2
-        version: 0.1.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       circomlib:
         specifier: ^2.0.5
         version: 2.0.5
       ethers:
         specifier: ^6
         version: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      idb:
-        specifier: ^8.0.3
-        version: 8.0.3
       next:
         specifier: ^14
         version: 14.2.33(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -56,9 +47,6 @@ importers:
       wagmi:
         specifier: 2.16.4
         version: 2.16.4(@tanstack/query-core@5.81.5)(@tanstack/react-query@5.59.15(react@18.3.1))(@types/react@18.3.26)(bufferutil@4.0.9)(react@18.3.1)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.34.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.75))(zod@3.25.75)
-      zustand:
-        specifier: ^5.0.0
-        version: 5.0.8(@types/react@18.3.26)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -169,16 +157,6 @@ packages:
   '@ethereumjs/util@8.1.0':
     resolution: {integrity: sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==}
     engines: {node: '>=14'}
-
-  '@fhevm/mock-utils@0.1.0':
-    resolution: {integrity: sha512-MZk+hXNrO4t0kIgoO9nLln9lKCefCe6gCAKeBhwAMmndIdYGIGkNJHVTbqAAMWS7wPTsA5pkR47BWvX0N6XaZQ==}
-    peerDependencies:
-      '@zama-fhe/relayer-sdk': ^0.2.0
-      ethers: ^6.1.0
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   '@gemini-wallet/core@0.2.0':
     resolution: {integrity: sha512-vv9aozWnKrrPWQ3vIFcWk7yta4hQW1Ie0fsNNPeXnjAxkbXr2hqMagEptLuMxpEP2W3mnRu05VDNKzcvAuuZDw==}
@@ -857,11 +835,6 @@ packages:
   '@walletconnect/window-metadata@1.0.1':
     resolution: {integrity: sha512-9koTqyGrM2cqFRW517BPY/iEtUDx2r1+Pwwu5m7sJ7ka79wi3EyqhqcICk/yDmv6jAS1rjKgTKXlEhanYjijcA==}
 
-  '@zama-fhe/relayer-sdk@0.1.2':
-    resolution: {integrity: sha512-xiNply3d8q6qC6hLfcE8BuPnguQZ9CHMbMcysoLMyN+H9UsQrXGwsdd7vA0DJS1aSvTiO54N/6u/E/FL2aHZlA==}
-    engines: {node: '>=20'}
-    hasBin: true
-
   abitype@1.0.8:
     resolution: {integrity: sha512-ZeiI6h3GnW06uYDLx0etQtX/p8E24UaHHBj57RSjK7YBFe7iuVn07EDpOeP451D06sF27VOz9JJPlIKJmXgkEg==}
     peerDependencies:
@@ -1133,10 +1106,6 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  commander@14.0.2:
-    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
-    engines: {node: '>=20'}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -1586,9 +1555,6 @@ packages:
       picomatch:
         optional: true
 
-  fetch-retry@6.0.0:
-    resolution: {integrity: sha512-BUFj1aMubgib37I3v4q78fYo63Po7t4HUPTpQ6/QE6yK6cIQrP+W43FYToeTEyg5m2Y7eFUtijUuAv/PDlWuag==}
-
   ffjavascript@0.2.56:
     resolution: {integrity: sha512-em6G5Lrj7ucIqj4TYEgyoHs/j99Urwwqa4+YxEVY2hggnpRimVj+noX5pZQTxI1pvtiekZI4rG65JBf0xraXrg==}
 
@@ -1759,9 +1725,6 @@ packages:
 
   idb-keyval@6.2.2:
     resolution: {integrity: sha512-yjD9nARJ/jb1g+CvD0tlhUHOrJ9Sy0P8T9MF3YaLlHnSRpwPfpTX0XIvpmw3gAJUmEu3FiICLBDPXVwyEvrleg==}
-
-  idb@8.0.3:
-    resolution: {integrity: sha512-LtwtVyVYO5BqRvcsKuB2iUMnHwPVByPCXFXOpuU96IZPPoPN6xjOGxZQ74pgSVVLQWtUOYgyeL4GE98BY5D3wg==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -2165,12 +2128,6 @@ packages:
 
   node-mock-http@1.0.3:
     resolution: {integrity: sha512-jN8dK25fsfnMrVsEhluUTPkBFY+6ybu7jSB1n+ri/vOGjJxU8J9CZhpSGkHXSkFjtUhbmoncG/YG9ta5Ludqog==}
-
-  node-tfhe@1.2.0:
-    resolution: {integrity: sha512-h+rVdBHpfAHukSyuPGNciKopnirW/gI4UibiR24/6R1+qC321R5u9gdfwOPSsSD1URokYAoo9HG7MOFnzS9/3A==}
-
-  node-tkms@0.11.0-rc20:
-    resolution: {integrity: sha512-Ez9Tnl1WQQ5+3jBTriu9t8K096zgND58R9lH8OSYPGjovNVSmYcvmCawVxz4y1fw2V3Q28JjNnqi6T/I98zeqA==}
 
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
@@ -2738,18 +2695,12 @@ packages:
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
 
-  tfhe@1.2.0:
-    resolution: {integrity: sha512-+Ks02bMYs5Rlk1twydzFdi2mG24CIFoeP3klB2s/F9HspFG3F/V41fElkRKWF/sxahRhCxOuXlu3lQyBrS2vKQ==}
-
   thread-stream@0.15.2:
     resolution: {integrity: sha512-UkEhKIg2pD+fjkHQKyJO3yoIvAP3N6RlNFt2dUhcS1FGvCD1cQa1M/PGknCLFIyZdtJOWQjejp7bdNqmN7zwdA==}
 
   tinyglobby@0.2.15:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
-
-  tkms@0.11.0-rc20:
-    resolution: {integrity: sha512-TH+D1Oy78qntx2n6DYu1+qt0zl+5o6peL87SZM4xDHFinx8uyeNUNTyFt+ytOlDYF0aaOMumtYp5/6BlrI7AiA==}
 
   tmp-promise@3.0.3:
     resolution: {integrity: sha512-RwM7MoPojPxsOBYnyd2hy0bxtIlVrihNs9pj5SUvY8Zz1sQcQG2tG1hSr8PDxfgEB8RNKDhqbIlroIarSNDNsQ==}
@@ -3011,9 +2962,6 @@ packages:
       typescript:
         optional: true
 
-  wasm-feature-detect@1.8.0:
-    resolution: {integrity: sha512-zksaLKM2fVlnB5jQQDqKXXwYHLQUVH9es+5TOOHwGOVJOCeRBCiPjwSg+3tN2AdTCzjgli4jijCH290kXb/zWQ==}
-
   wasmbuilder@0.0.16:
     resolution: {integrity: sha512-Qx3lEFqaVvp1cEYW7Bfi+ebRJrOiwz2Ieu7ZG2l7YyeSJIok/reEQCQCuicj/Y32ITIJuGIM9xZQppGx5LrQdA==}
 
@@ -3198,24 +3146,6 @@ packages:
       use-sync-external-store:
         optional: true
 
-  zustand@5.0.8:
-    resolution: {integrity: sha512-gyPKpIaxY9XcO2vSMrLbiER7QMAMGOQZVRdJ6Zi782jkbzZygq5GI9nG8g+sMgitRtndwaBSl7uiqC49o1SSiw==}
-    engines: {node: '>=12.20.0'}
-    peerDependencies:
-      '@types/react': '>=18.0.0'
-      immer: '>=9.0.6'
-      react: '>=18.0.0'
-      use-sync-external-store: '>=1.2.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-      use-sync-external-store:
-        optional: true
-
 snapshots:
 
   '@adraffy/ens-normalize@1.10.1': {}
@@ -3352,13 +3282,6 @@ snapshots:
       '@ethereumjs/rlp': 4.0.1
       ethereum-cryptography: 2.2.1
       micro-ftch: 0.3.1
-
-  '@fhevm/mock-utils@0.1.0(@zama-fhe/relayer-sdk@0.1.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(ethers@6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(typescript@5.9.3)':
-    dependencies:
-      '@zama-fhe/relayer-sdk': 0.1.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      ethers: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-    optionalDependencies:
-      typescript: 5.9.3
 
   '@gemini-wallet/core@0.2.0(viem@2.34.0(bufferutil@4.0.9)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.75))':
     dependencies:
@@ -4863,21 +4786,6 @@ snapshots:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
 
-  '@zama-fhe/relayer-sdk@0.1.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
-    dependencies:
-      commander: 14.0.2
-      ethers: 6.15.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
-      fetch-retry: 6.0.0
-      keccak: 3.0.4
-      node-tfhe: 1.2.0
-      node-tkms: 0.11.0-rc20
-      tfhe: 1.2.0
-      tkms: 0.11.0-rc20
-      wasm-feature-detect: 1.8.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
   abitype@1.0.8(typescript@5.9.3)(zod@3.22.4):
     optionalDependencies:
       typescript: 5.9.3
@@ -5179,8 +5087,6 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
-
-  commander@14.0.2: {}
 
   concat-map@0.0.1: {}
 
@@ -5784,8 +5690,6 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.3
 
-  fetch-retry@6.0.0: {}
-
   ffjavascript@0.2.56:
     dependencies:
       wasmbuilder: 0.0.16
@@ -5983,8 +5887,6 @@ snapshots:
   idb-keyval@6.2.1: {}
 
   idb-keyval@6.2.2: {}
-
-  idb@8.0.3: {}
 
   ieee754@1.2.1: {}
 
@@ -6374,10 +6276,6 @@ snapshots:
   node-gyp-build@4.8.4: {}
 
   node-mock-http@1.0.3: {}
-
-  node-tfhe@1.2.0: {}
-
-  node-tkms@0.11.0-rc20: {}
 
   normalize-path@3.0.0: {}
 
@@ -7064,8 +6962,6 @@ snapshots:
 
   text-table@0.2.0: {}
 
-  tfhe@1.2.0: {}
-
   thread-stream@0.15.2:
     dependencies:
       real-require: 0.1.0
@@ -7074,8 +6970,6 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
-
-  tkms@0.11.0-rc20: {}
 
   tmp-promise@3.0.3:
     dependencies:
@@ -7369,8 +7263,6 @@ snapshots:
       - utf-8-validate
       - zod
 
-  wasm-feature-detect@1.8.0: {}
-
   wasmbuilder@0.0.16: {}
 
   wasmcurves@0.2.0:
@@ -7525,12 +7417,6 @@ snapshots:
       use-sync-external-store: 1.4.0(react@18.3.1)
 
   zustand@5.0.3(@types/react@18.3.26)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1)):
-    optionalDependencies:
-      '@types/react': 18.3.26
-      react: 18.3.1
-      use-sync-external-store: 1.4.0(react@18.3.1)
-
-  zustand@5.0.8(@types/react@18.3.26)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1)):
     optionalDependencies:
       '@types/react': 18.3.26
       react: 18.3.1

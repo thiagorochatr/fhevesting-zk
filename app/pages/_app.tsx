@@ -1,8 +1,8 @@
 /**
  * Global App Configuration
  * 
- * Wraps entire app with WagmiProvider for unified wallet management
- * Supports both ZK (Arbitrum Sepolia) and FHE (Ethereum Sepolia)
+ * Wraps entire app with WagmiProvider for wallet management
+ * Supports ZK Proof generation and verification on Arbitrum Sepolia
  */
 
 import type { AppProps } from "next/app";
@@ -10,18 +10,16 @@ import { useState, useEffect } from "react";
 import { WagmiProvider as WagmiProviderOriginal } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { arbitrumSepolia, sepolia } from "wagmi/chains";
-import { InMemoryStorageProvider } from "../lib/fhevm-sdk/react/useInMemoryStorage";
+import { arbitrumSepolia } from "wagmi/chains";
 import "@rainbow-me/rainbowkit/styles.css";
 import "../styles/globals.css";
 
-// Create wagmi config with both chains
+// Create wagmi config for Arbitrum Sepolia (ZK Proof chain)
 const config = getDefaultConfig({
-  appName: "ZK + FHE Demo",
+  appName: "ZK Proof Demo",
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "3a8170812b534d0ff9d794f19a901d64",
   chains: [
-    arbitrumSepolia, // For ZK Proof
-    sepolia,         // For FHE Counter Demo
+    arbitrumSepolia, // For ZK Proof generation and verification
   ],
   ssr: false,
 });
@@ -44,9 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiProviderOriginal config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <InMemoryStorageProvider>
-            <Component {...pageProps} />
-          </InMemoryStorageProvider>
+          <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProviderOriginal>

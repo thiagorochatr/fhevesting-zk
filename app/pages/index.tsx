@@ -6,7 +6,6 @@ import { NextPage } from "next";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { config } from "../lib/config";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   const { address, chain } = useAccount();
@@ -273,11 +272,6 @@ const Home: NextPage = () => {
       console.log("🎉 NFT MINTED SUCCESSFULLY!");
       console.log("=".repeat(60) + "\n");
 
-      // Mark user as verified for FHE access
-      localStorage.setItem("zkVerified", "true");
-      localStorage.setItem("zkVerifiedAt", Date.now().toString());
-      localStorage.setItem("zkVerifiedAddress", address);
-
       setMintSuccess(true);
       setProofResult(null);
       setError("");
@@ -298,9 +292,9 @@ const Home: NextPage = () => {
           <div className={styles.heroSection}>
             <div className={styles.lockIcon}>🔐</div>
             <h1 className={styles.title}>
-              <span className={styles.vestingGradient}>FHEVesting</span>
+              <span className={styles.vestingGradient}>ZK Proof Demo</span>
             </h1>
-            <p className={styles.subtitle}>Confidential Vesting Platform</p>
+            <p className={styles.subtitle}>Privacy-Preserving Balance Verification</p>
             
             <p className={styles.description}>
               Verify your eligibility privately using Zero-Knowledge Proofs. 
@@ -315,13 +309,13 @@ const Home: NextPage = () => {
               </div>
               <div className={styles.featureCard}>
                 <div className={styles.featureIcon}>⚡</div>
-                <div className={styles.featureTitle}>FHE Powered</div>
-                <div className={styles.featureDesc}>Fully homomorphic encryption</div>
+                <div className={styles.featureTitle}>Groth16 Proofs</div>
+                <div className={styles.featureDesc}>Efficient zk-SNARKs</div>
               </div>
               <div className={styles.featureCard}>
                 <div className={styles.featureIcon}>🔒</div>
-                <div className={styles.featureTitle}>Confidential</div>
-                <div className={styles.featureDesc}>Your data stays private</div>
+                <div className={styles.featureTitle}>On-Chain Verification</div>
+                <div className={styles.featureDesc}>Trustless and transparent</div>
               </div>
             </div>
 
@@ -336,9 +330,9 @@ const Home: NextPage = () => {
             <div className={styles.verificationCard}>
               <div className={styles.cardHeader}>
                 <h2 className={styles.cardTitle}>
-                  <span className={styles.verifyIcon}>✓</span> Eligibility Verification
+                  <span className={styles.verifyIcon}>✓</span> Balance Verification
                 </h2>
-                <p className={styles.cardSubtitle}>Prove your balance privately to access the vesting platform</p>
+                <p className={styles.cardSubtitle}>Prove your balance privately using Zero-Knowledge Proofs</p>
               </div>
 
               <div className={styles.statusBar}>
@@ -463,22 +457,9 @@ const Home: NextPage = () => {
                   <div className={styles.finalSuccessIcon}>🎉</div>
                   <h3 className={styles.finalSuccessTitle}>Verification Complete!</h3>
                   <p className={styles.finalSuccessText}>
-                    Your eligibility has been verified on-chain. You can now access the confidential vesting platform.
+                    Your balance has been verified on-chain using Zero-Knowledge Proofs.
+                    The NFT has been minted to your wallet as proof of verification.
                   </p>
-                  
-                  <div className={styles.nextStepBox}>
-                    <div className={styles.nextStepIcon}>🔐</div>
-                    <h4 className={styles.nextStepTitle}>Access FHE Vesting Platform</h4>
-                    <p className={styles.nextStepDesc}>
-                      Manage confidential vesting schedules with <strong>Fully Homomorphic Encryption</strong>.
-                      All computations are performed on encrypted data.
-                    </p>
-                    <Link href="/vesting-admin">
-                      <button className={styles.vestingButton}>
-                        🚀 Enter Vesting Admin Panel
-                      </button>
-                    </Link>
-                  </div>
 
                   <button
                     type="button"
