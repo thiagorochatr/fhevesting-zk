@@ -6,6 +6,7 @@ use alloy_primitives::{Address, U256};
 use stylus_sdk::{
     prelude::*,
     call::RawCall,
+    alloy_sol_types::sol,
 };
 
 mod verifying_key;
@@ -14,6 +15,20 @@ use verifying_key::get_verifying_key;
 type G1Point = [u8; 64];   // 32 bytes x + 32 bytes y
 type G2Point = [u8; 128];  // 32 bytes x0 + 32 bytes x1 + 32 bytes y0 + 32 bytes y1
 type Scalar = [u8; 32];    // 32 bytes for field element
+
+//============================================================================
+// EXTERNAL CONTRACT INTERFACES
+//============================================================================
+
+sol_interface! {
+    interface ICCIPSender {
+        function sendMessage(
+            uint64 destinationChainSelector,
+            address receiver,
+            string calldata text
+        ) external returns (bytes32 messageId);
+    }
+}
 
 //============================================================================
 // PRECOMPILE BACKEND FOR BN254 OPERATIONS (Renegade style)
@@ -344,6 +359,40 @@ impl ZKMintContract {
         if !self.verify_proof(proof_data, public_inputs)? {
             return Err("Invalid ZK proof".into());
         }
+        
+        // CCIP: Send message cross-chain after successful verification
+        // Hardcoded CCIP configuration
+        let ccip_sender_address = Address::from([
+            0x61, 0x0a, 0x3f, 0xe3, 0xf5, 0xd9, 0x08, 0x0a, 0xe1, 0x71,
+            0x01, 0xd2, 0xa4, 0x7f, 0x08, 0x1a, 0xca, 0xd5, 0x24, 0x43
+        ]); // 0x610A3FE3F5D9080ae17101D2a47f081aCAd52443
+        
+        let ccip_sender = ICCIPSender::new(ccip_sender_address);
+        
+        // Parâmetros da mensagem CCIP
+        let destination_chain_selector: u64 = 16015286601757825753; // Ethereum Sepolia
+        let receiver = Address::from([
+            0x25, 0x04, 0x56, 0x2a, 0x26, 0x36, 0x6e, 0xe9, 0x1e, 0x19,
+            0x85, 0x8b, 0xc6, 0xf5, 0xc2, 0xbe, 0xc7, 0x73, 0x41, 0x67
+        ]); // 0x2504562a26366ee91e19858bC6f5C2bec7734167
+        
+        let message = alloc::format!(
+            "user:0x{:x},nullifier:{},timestamp:{}",
+            to,
+            nullifier,
+            proof_timestamp
+        );
+        
+        // Chamar sendMessage no contrato CCIP Sender
+        let config = Call::new();
+        let config_typed: Call<true> = unsafe { core::mem::transmute(config) };
+        let _message_id = ccip_sender.send_message(
+            &*self.vm(),
+            config_typed,
+            destination_chain_selector,
+            receiver,
+            message
+        )?;
         
         // Mark nullifier as used to prevent future replay
         self.used_nullifiers.setter(nullifier).set(true);
